@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this benchmark testbed, dataset, or telemetry in your research, please cite it as below."
+title: "PoultryTrace: Empirical Security Evaluation Benchmark for Hyperledger Fabric Private Data Collections against Consortium Insiders and Bounded Agentic AI"
+authors:
+  - family-names: "PoultryTrace"
+    given-names: "Research Project"
+date-released: 2026-10-27
+url: "https://github.com/poultrytrace-pdc-security"
+keywords:
+  - "Hyperledger Fabric"
+  - "Private Data Collections"
+  - "Agentic AI"
+  - "Supply Chain Traceability"
+  - "Insider Threat"
+  - "Smart Contracts"
+license: "Apache-2.0"

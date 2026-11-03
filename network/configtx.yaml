@@ -1,0 +1,325 @@
+# PoultryTrace Stage 7 — Hyperledger Fabric v3.1.5 SmartBFT
+# Seven application org MSPs, one orderer org MSP, four BFT consenters.
+# Generated on ws-integrator from Stage 5 public MSPs and node certificates.
+Organizations:
+- &id008
+  Name: OrdererOrgMSP
+  ID: OrdererOrgMSP
+  MSPDir: /home/coder/poultrytrace/crypto/ordererOrganizations/orderer.poultrytrace.test/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: OR('OrdererOrgMSP.member')
+    Writers:
+      Type: Signature
+      Rule: OR('OrdererOrgMSP.member')
+    Admins:
+      Type: Signature
+      Rule: OR('OrdererOrgMSP.admin')
+  OrdererEndpoints:
+  - orderer0:7050
+  - orderer1:7050
+  - orderer2:7050
+  - orderer3:7050
+- &id001
+  Name: IntegratorOrgMSP
+  ID: IntegratorOrgMSP
+  MSPDir: /home/coder/poultrytrace/crypto/peerOrganizations/integrator.poultrytrace.test/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: OR('IntegratorOrgMSP.admin', 'IntegratorOrgMSP.peer', 'IntegratorOrgMSP.client')
+    Writers:
+      Type: Signature
+      Rule: OR('IntegratorOrgMSP.admin', 'IntegratorOrgMSP.client')
+    Admins:
+      Type: Signature
+      Rule: OR('IntegratorOrgMSP.admin')
+    Endorsement:
+      Type: Signature
+      Rule: OR('IntegratorOrgMSP.peer')
+- &id002
+  Name: HatcheryOrgMSP
+  ID: HatcheryOrgMSP
+  MSPDir: /home/coder/poultrytrace/crypto/peerOrganizations/hatchery.poultrytrace.test/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: OR('HatcheryOrgMSP.admin', 'HatcheryOrgMSP.peer', 'HatcheryOrgMSP.client')
+    Writers:
+      Type: Signature
+      Rule: OR('HatcheryOrgMSP.admin', 'HatcheryOrgMSP.client')
+    Admins:
+      Type: Signature
+      Rule: OR('HatcheryOrgMSP.admin')
+    Endorsement:
+      Type: Signature
+      Rule: OR('HatcheryOrgMSP.peer')
+- &id003
+  Name: FarmOrgMSP
+  ID: FarmOrgMSP
+  MSPDir: /home/coder/poultrytrace/crypto/peerOrganizations/farm.poultrytrace.test/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: OR('FarmOrgMSP.admin', 'FarmOrgMSP.peer', 'FarmOrgMSP.client')
+    Writers:
+      Type: Signature
+      Rule: OR('FarmOrgMSP.admin', 'FarmOrgMSP.client')
+    Admins:
+      Type: Signature
+      Rule: OR('FarmOrgMSP.admin')
+    Endorsement:
+      Type: Signature
+      Rule: OR('FarmOrgMSP.peer')
+- &id004
+  Name: RPAOrgMSP
+  ID: RPAOrgMSP
+  MSPDir: /home/coder/poultrytrace/crypto/peerOrganizations/rpa.poultrytrace.test/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: OR('RPAOrgMSP.admin', 'RPAOrgMSP.peer', 'RPAOrgMSP.client')
+    Writers:
+      Type: Signature
+      Rule: OR('RPAOrgMSP.admin', 'RPAOrgMSP.client')
+    Admins:
+      Type: Signature
+      Rule: OR('RPAOrgMSP.admin')
+    Endorsement:
+      Type: Signature
+      Rule: OR('RPAOrgMSP.peer')
+- &id005
+  Name: DistributorOrgMSP
+  ID: DistributorOrgMSP
+  MSPDir: /home/coder/poultrytrace/crypto/peerOrganizations/distributor.poultrytrace.test/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: OR('DistributorOrgMSP.admin', 'DistributorOrgMSP.peer', 'DistributorOrgMSP.client')
+    Writers:
+      Type: Signature
+      Rule: OR('DistributorOrgMSP.admin', 'DistributorOrgMSP.client')
+    Admins:
+      Type: Signature
+      Rule: OR('DistributorOrgMSP.admin')
+    Endorsement:
+      Type: Signature
+      Rule: OR('DistributorOrgMSP.peer')
+- &id006
+  Name: RetailerOrgMSP
+  ID: RetailerOrgMSP
+  MSPDir: /home/coder/poultrytrace/crypto/peerOrganizations/retailer.poultrytrace.test/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: OR('RetailerOrgMSP.admin', 'RetailerOrgMSP.peer', 'RetailerOrgMSP.client')
+    Writers:
+      Type: Signature
+      Rule: OR('RetailerOrgMSP.admin', 'RetailerOrgMSP.client')
+    Admins:
+      Type: Signature
+      Rule: OR('RetailerOrgMSP.admin')
+    Endorsement:
+      Type: Signature
+      Rule: OR('RetailerOrgMSP.peer')
+- &id007
+  Name: RegulatorOrgMSP
+  ID: RegulatorOrgMSP
+  MSPDir: /home/coder/poultrytrace/crypto/peerOrganizations/regulator.poultrytrace.test/msp
+  Policies:
+    Readers:
+      Type: Signature
+      Rule: OR('RegulatorOrgMSP.admin', 'RegulatorOrgMSP.peer', 'RegulatorOrgMSP.client')
+    Writers:
+      Type: Signature
+      Rule: OR('RegulatorOrgMSP.admin', 'RegulatorOrgMSP.client')
+    Admins:
+      Type: Signature
+      Rule: OR('RegulatorOrgMSP.admin')
+    Endorsement:
+      Type: Signature
+      Rule: OR('RegulatorOrgMSP.peer')
+Capabilities:
+  Channel:
+    V3_0: true
+  Orderer:
+    V2_0: true
+  Application:
+    V2_5: true
+Application:
+  Organizations: &id010
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+  - *id005
+  - *id006
+  - *id007
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: ANY Readers
+    Writers:
+      Type: ImplicitMeta
+      Rule: ANY Writers
+    Admins:
+      Type: ImplicitMeta
+      Rule: MAJORITY Admins
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: MAJORITY Endorsement
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: MAJORITY Endorsement
+  Capabilities:
+    V2_5: true
+Orderer:
+  OrdererType: BFT
+  BatchTimeout: 2s
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 10 MB
+    PreferredMaxBytes: 512 KB
+  ConsenterMapping: &id009
+  - ID: 1
+    Host: orderer0
+    Port: 7050
+    MSPID: OrdererOrgMSP
+    Identity: /home/coder/poultrytrace/crypto/ordererOrganizations/orderer.poultrytrace.test/orderers/orderer0.orderer.poultrytrace.test/msp/signcerts/orderer0.orderer.poultrytrace.test-cert.pem
+    ClientTLSCert: /home/coder/poultrytrace/crypto/ordererOrganizations/orderer.poultrytrace.test/orderers/orderer0.orderer.poultrytrace.test/tls/server.crt
+    ServerTLSCert: /home/coder/poultrytrace/crypto/ordererOrganizations/orderer.poultrytrace.test/orderers/orderer0.orderer.poultrytrace.test/tls/server.crt
+  - ID: 2
+    Host: orderer1
+    Port: 7050
+    MSPID: OrdererOrgMSP
+    Identity: /home/coder/poultrytrace/crypto/ordererOrganizations/orderer.poultrytrace.test/orderers/orderer1.orderer.poultrytrace.test/msp/signcerts/orderer1.orderer.poultrytrace.test-cert.pem
+    ClientTLSCert: /home/coder/poultrytrace/crypto/ordererOrganizations/orderer.poultrytrace.test/orderers/orderer1.orderer.poultrytrace.test/tls/server.crt
+    ServerTLSCert: /home/coder/poultrytrace/crypto/ordererOrganizations/orderer.poultrytrace.test/orderers/orderer1.orderer.poultrytrace.test/tls/server.crt
+  - ID: 3
+    Host: orderer2
+    Port: 7050
+    MSPID: OrdererOrgMSP
+    Identity: /home/coder/poultrytrace/crypto/ordererOrganizations/orderer.poultrytrace.test/orderers/orderer2.orderer.poultrytrace.test/msp/signcerts/orderer2.orderer.poultrytrace.test-cert.pem
+    ClientTLSCert: /home/coder/poultrytrace/crypto/ordererOrganizations/orderer.poultrytrace.test/orderers/orderer2.orderer.poultrytrace.test/tls/server.crt
+    ServerTLSCert: /home/coder/poultrytrace/crypto/ordererOrganizations/orderer.poultrytrace.test/orderers/orderer2.orderer.poultrytrace.test/tls/server.crt
+  - ID: 4
+    Host: orderer3
+    Port: 7050
+    MSPID: OrdererOrgMSP
+    Identity: /home/coder/poultrytrace/crypto/ordererOrganizations/orderer.poultrytrace.test/orderers/orderer3.orderer.poultrytrace.test/msp/signcerts/orderer3.orderer.poultrytrace.test-cert.pem
+    ClientTLSCert: /home/coder/poultrytrace/crypto/ordererOrganizations/orderer.poultrytrace.test/orderers/orderer3.orderer.poultrytrace.test/tls/server.crt
+    ServerTLSCert: /home/coder/poultrytrace/crypto/ordererOrganizations/orderer.poultrytrace.test/orderers/orderer3.orderer.poultrytrace.test/tls/server.crt
+  SmartBFT:
+    RequestBatchMaxInterval: 200ms
+    RequestForwardTimeout: 5s
+    RequestComplainTimeout: 20s
+    RequestAutoRemoveTimeout: 3m0s
+    ViewChangeResendInterval: 5s
+    ViewChangeTimeout: 20s
+    LeaderHeartbeatTimeout: 1m0s
+    CollectTimeout: 1s
+    IncomingMessageBufferSize: 200
+    RequestPoolSize: 100000
+    LeaderHeartbeatCount: 10
+  Organizations:
+  - *id008
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: ANY Readers
+    Writers:
+      Type: ImplicitMeta
+      Rule: ANY Writers
+    Admins:
+      Type: ImplicitMeta
+      Rule: MAJORITY Admins
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: ANY Writers
+  Capabilities:
+    V2_0: true
+Channel:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: ANY Readers
+    Writers:
+      Type: ImplicitMeta
+      Rule: ANY Writers
+    Admins:
+      Type: ImplicitMeta
+      Rule: MAJORITY Admins
+  Capabilities:
+    V3_0: true
+Profiles:
+  PoultryTraceBFT:
+    Orderer:
+      OrdererType: BFT
+      BatchTimeout: 2s
+      BatchSize:
+        MaxMessageCount: 10
+        AbsoluteMaxBytes: 10 MB
+        PreferredMaxBytes: 512 KB
+      ConsenterMapping: *id009
+      SmartBFT:
+        RequestBatchMaxInterval: 200ms
+        RequestForwardTimeout: 5s
+        RequestComplainTimeout: 20s
+        RequestAutoRemoveTimeout: 3m0s
+        ViewChangeResendInterval: 5s
+        ViewChangeTimeout: 20s
+        LeaderHeartbeatTimeout: 1m0s
+        CollectTimeout: 1s
+        IncomingMessageBufferSize: 200
+        RequestPoolSize: 100000
+        LeaderHeartbeatCount: 10
+      Organizations:
+      - *id008
+      Policies:
+        Readers:
+          Type: ImplicitMeta
+          Rule: ANY Readers
+        Writers:
+          Type: ImplicitMeta
+          Rule: ANY Writers
+        Admins:
+          Type: ImplicitMeta
+          Rule: MAJORITY Admins
+        BlockValidation:
+          Type: ImplicitMeta
+          Rule: ANY Writers
+      Capabilities:
+        V2_0: true
+    Application:
+      Organizations: *id010
+      Policies:
+        Readers:
+          Type: ImplicitMeta
+          Rule: ANY Readers
+        Writers:
+          Type: ImplicitMeta
+          Rule: ANY Writers
+        Admins:
+          Type: ImplicitMeta
+          Rule: MAJORITY Admins
+        LifecycleEndorsement:
+          Type: ImplicitMeta
+          Rule: MAJORITY Endorsement
+        Endorsement:
+          Type: ImplicitMeta
+          Rule: MAJORITY Endorsement
+      Capabilities:
+        V2_5: true
+    Policies:
+      Readers:
+        Type: ImplicitMeta
+        Rule: ANY Readers
+      Writers:
+        Type: ImplicitMeta
+        Rule: ANY Writers
+      Admins:
+        Type: ImplicitMeta
+        Rule: MAJORITY Admins
+    Capabilities:
+      V3_0: true

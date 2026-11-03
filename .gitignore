@@ -1,0 +1,28 @@
+# Python cache & build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Virtual environments
+venv/
+.env
+.venv/
+env/
+
+# Editor / OS artifacts
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+
+# Heavy binary database dumps (archive via GitHub Releases / Zenodo)
+*.tar.gz
+*.zip
+
+# Generated office binaries
+*.docx

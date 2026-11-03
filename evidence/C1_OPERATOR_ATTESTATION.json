@@ -1,0 +1,18 @@
+{
+  "experiment": "PoultryTrace-TM2-S1",
+  "condition": "C1",
+  "testbed_isolation": "OPERATOR_CONFIRM",
+  "snapshot_id": "C0_SNAPSHOT_20261027_1018",
+  "c0_snapshot_restore_tested": true,
+  "four_orderers_consenter_active": true,
+  "seven_peer_consistent_height": true,
+  "collections_static_gate_passed": true,
+  "c1_chaincode_sequence_increased": true,
+  "c1_compiled_binary_hash_verified_on_seven_ccaas": true,
+  "retailer_not_added_to_collection_membership": true,
+  "positive_control_batch": "BRL-2026-102",
+  "positive_control_retailer_user1_to_farm_verified_by_operator": true,
+  "no_host_docker_socket_in_ws_retailer": true,
+  "operator_review_utc": "2026-10-27T10:26:30Z",
+  "operator_notes": "C1 deployed via sequence 2 with memberOnlyRead:false and removed requiresOrg in readPerformance. Positive control BRL-2026-102 verified disclosure from Farm peer."
+}

@@ -1,0 +1,23 @@
+{
+  "seed": 20261027,
+  "count": 100,
+  "batchIds": [
+    "BRL-2026-101",
+    "BRL-2026-200"
+  ],
+  "activeCollection": "pdc_farm_integrator",
+  "stage10Chaincode": "poultry-traceability:1.0 sequence1",
+  "notDeployedCollections": [
+    "pdc_doc_contract",
+    "pdc_rpa_distribution",
+    "pdc_quality_audit"
+  ],
+  "files": {
+    "batches_public.jsonl": "4fee068c6cea16f03ac8a70d8c0840e7b5bf235e80229376c94729ef7b502cdb",
+    "farm_performance_private.jsonl": "d37e96bccd290a575e8f9c10b0dda9684bf55680d0a4781cddfbc03257641eeb",
+    "future_doc_contract_NOT_DEPLOYED.jsonl": "b3091a4a498f4eb3e0d9dc2c45c259ab5795eb24413154418e61489f0ef8922b",
+    "future_rpa_distribution_NOT_DEPLOYED.jsonl": "1ab6466f7899fe3bec0b80ad63211f5484113c269ef8d47de9b422c60aeb1592",
+    "future_quality_audit_NOT_DEPLOYED.jsonl": "7fdfebdf17977a75b185c01233eba7fcc868e391a1b30e7f4918b13ee63da057",
+    "ground_truth_RESTRICTED.csv": "83df73599f45bd54851ae55915b5fed691aa4822b47900ea7b5e9fb4fd093f3a"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "static_gate": "PASS",
+  "note": "Does not prove live C1 deployment or disclosure",
+  "sha256_c0_go": "44019d16ff6cfadb22dd0c7bbcdad10e85d71abc2500eb675e1489f39b790139",
+  "sha256_c1_go": "677cd503440189e7a779f590ea9156fafa51af8c17bff0648606d41954e4a708",
+  "sha256_c0_collection": "cdea2d2a99e9c2cfae9dfab6a8b0d669b9255363841452d17b385614de382883",
+  "sha256_c1_collection": "229416340e27504943133da7be8d18e3abb96859685592827c7978b3f0bf65c5"
+}

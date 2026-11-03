@@ -1,0 +1,261 @@
+chaincode:
+  builder: $(DOCKER_NS)/fabric-ccenv:$(TWO_DIGIT_VERSION)
+  executetimeout: 30s
+  externalBuilders:
+  - name: poultrytrace-ccaas
+    path: /home/coder/poultrytrace/external-builder
+  golang:
+    dynamicLink: false
+    runtime: $(DOCKER_NS)/fabric-baseos:$(TWO_DIGIT_VERSION)
+  id:
+    name: null
+    path: null
+  installTimeout: 300s
+  java:
+    runtime: $(DOCKER_NS)/fabric-javaenv:2.5
+  keepalive: 0
+  logging:
+    format: '%{color}%{time:2006-01-02 15:04:05.000 MST} [%{module}] %{shortfunc}
+      -> %{level:.4s} %{id:03x}%{color:reset} %{message}'
+    level: info
+    shim: warning
+  mode: net
+  node:
+    runtime: $(DOCKER_NS)/fabric-nodeenv:2.5
+  pull: false
+  runtimeParams:
+    maxSizeGetMultipleKeys: 1000
+    maxSizeWriteBatch: 1000
+    useGetMultipleKeys: true
+    useWriteBatch: true
+  startuptimeout: 300s
+  system:
+    _lifecycle: enable
+    cscc: enable
+    lscc: enable
+    qscc: enable
+ledger:
+  blockchain: null
+  history:
+    enableHistoryDatabase: true
+  pvtdataStore:
+    collElgProcDbBatchesInterval: 1000
+    collElgProcMaxDbBatchSize: 5000
+    deprioritizedDataReconcilerInterval: 60m
+    purgeInterval: 100
+    purgedKeyAuditLogging: true
+  snapshots:
+    rootDir: /home/coder/poultrytrace/ledger/peer/snapshots
+  state:
+    couchDBConfig:
+      cacheSize: 64
+      couchDBAddress: 127.0.0.1:5984
+      createGlobalChangesDB: false
+      internalQueryLimit: 1000
+      maxBatchUpdateSize: 1000
+      maxRetries: 3
+      maxRetriesOnStartup: 10
+      password: null
+      requestTimeout: 35s
+      username: null
+    stateDatabase: goleveldb
+    totalQueryLimit: 100000
+metrics:
+  provider: disabled
+  statsd:
+    address: 127.0.0.1:8125
+    network: udp
+    prefix: null
+    writeInterval: 10s
+operations:
+  listenAddress: 127.0.0.1:9443
+  tls:
+    cert:
+      file: null
+    clientAuthRequired: false
+    clientRootCAs:
+      files: []
+    enabled: false
+    key:
+      file: null
+peer:
+  BCCSP:
+    Default: SW
+    PKCS11:
+      AltID: null
+      Hash: null
+      Immutable: null
+      KeyIds: null
+      Label: null
+      Library: null
+      Pin: null
+      Security: null
+      SoftwareVerify: null
+    SW:
+      FileKeyStore:
+        KeyStore: null
+      Hash: SHA2
+      Security: 256
+  address: integrator:7051
+  addressAutoDetect: false
+  authentication:
+    timewindow: 15m
+  chaincodeAddress: 127.0.0.1:7052
+  chaincodeListenAddress: 127.0.0.1:7052
+  client:
+    connTimeout: 3s
+  deliveryclient:
+    addressOverrides: null
+    blockCensorshipTimeoutKey: 30s
+    blockGossipEnabled: false
+    connTimeout: 3s
+    minimalReconnectInterval: 100ms
+    policy: cluster
+    reConnectBackoffThreshold: 3600s
+    reconnectTotalTimeThreshold: 3600s
+  discovery:
+    authCacheEnabled: true
+    authCacheMaxSize: 1000
+    authCachePurgeRetentionRatio: 0.75
+    enabled: true
+    orgMembersAllowedAccess: false
+  fileSystemPath: /home/coder/poultrytrace/ledger/peer
+  gateway:
+    broadcastTimeout: 30s
+    dialTimeout: 2m
+    enabled: true
+    endorsementTimeout: 30s
+  gossip:
+    aliveExpirationTimeout: 25s
+    aliveTimeInterval: 5s
+    bootstrap: 127.0.0.1:7051
+    connTimeout: 2s
+    dialTimeout: 3s
+    digestWaitTime: 1s
+    election:
+      leaderAliveThreshold: 10s
+      leaderElectionDuration: 5s
+      membershipSampleInterval: 1s
+      startupGracePeriod: 15s
+    endpoint: null
+    externalEndpoint: integrator:7051
+    maxBlockCountToStore: 10
+    maxConnectionAttempts: 120
+    maxPropagationBurstLatency: 10ms
+    maxPropagationBurstSize: 10
+    membershipTrackerInterval: 5s
+    msgExpirationFactor: 20
+    orgLeader: true
+    propagateIterations: 1
+    propagatePeerNum: 3
+    publishCertPeriod: 10s
+    publishStateInfoInterval: 4s
+    pullInterval: 4s
+    pullPeerNum: 3
+    pvtData:
+      btlPullMargin: 10
+      implicitCollectionDisseminationPolicy:
+        maxPeerCount: 1
+        requiredPeerCount: 0
+      pullRetryThreshold: 60s
+      pushAckTimeout: 3s
+      reconcileBatchSize: 10
+      reconcileSleepInterval: 1m
+      reconciliationEnabled: true
+      skipPullingInvalidTransactionsDuringCommit: false
+      transientstoreMaxBlockRetention: 20000
+    reconnectInterval: 25s
+    recvBuffSize: 20
+    requestStateInfoInterval: 4s
+    requestWaitTime: 1500ms
+    responseWaitTime: 2s
+    sendBuffSize: 200
+    skipBlockVerification: false
+    state:
+      batchSize: 10
+      blockBufferSize: 20
+      checkInterval: 10s
+      enabled: false
+      maxRetries: 3
+      responseTimeout: 3s
+    stateInfoRetentionInterval: null
+    useLeaderElection: false
+  handlers:
+    authFilters:
+    - name: DefaultAuth
+    - name: ExpirationCheck
+    - name: TimeWindowCheck
+    decorators:
+    - name: DefaultDecorator
+    endorsers:
+      escc:
+        library: null
+        name: DefaultEndorsement
+    validators:
+      vscc:
+        library: null
+        name: DefaultValidation
+  id: peer0.integrator.poultrytrace.test
+  keepalive:
+    client:
+      interval: 60s
+      timeout: 20s
+    deliveryClient:
+      interval: 60s
+      timeout: 20s
+    interval: 7200s
+    minInterval: 60s
+    timeout: 20s
+  limits:
+    concurrency:
+      deliverService: 2500
+      endorserService: 2500
+      gatewayService: 500
+  listenAddress: 0.0.0.0:7051
+  localMspId: IntegratorOrgMSP
+  localMspType: bccsp
+  maxRecvMsgSize: 104857600
+  maxSendMsgSize: 104857600
+  mspConfigPath: /home/coder/poultrytrace/crypto/node/msp
+  networkId: poultrytrace
+  profile:
+    enabled: false
+    listenAddress: 0.0.0.0:6060
+  tls:
+    cert:
+      file: /home/coder/poultrytrace/crypto/node/tls/server.crt
+    clientAuthRequired: false
+    clientCert:
+      file: null
+    clientKey:
+      file: null
+    clientRootCAs:
+      files:
+      - /home/coder/poultrytrace/crypto/node/tls/ca.crt
+    enabled: true
+    key:
+      file: /home/coder/poultrytrace/crypto/node/tls/server.key
+    rootcert:
+      file: /home/coder/poultrytrace/crypto/node/tls/ca.crt
+  validatorPoolSize: null
+vm:
+  docker:
+    attachStdout: false
+    hostConfig:
+      Dns: null
+      LogConfig:
+        Config:
+          max-file: '5'
+          max-size: 50m
+        Type: json-file
+      Memory: 2147483648
+      NetworkMode: host
+    tls:
+      ca:
+        file: docker/ca.crt
+      cert:
+        file: docker/tls.crt
+      enabled: false
+      key:
+        file: docker/tls.key
+  endpoint: ''

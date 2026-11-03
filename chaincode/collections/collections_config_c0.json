@@ -1,0 +1,42 @@
+[
+  {
+    "name": "pdc_farm_integrator",
+    "policy": "OR('FarmOrgMSP.member','IntegratorOrgMSP.member')",
+    "requiredPeerCount": 1,
+    "maxPeerCount": 1,
+    "blockToLive": 0,
+    "memberOnlyRead": true,
+    "memberOnlyWrite": true,
+    "endorsementPolicy": {"signaturePolicy": "AND('FarmOrgMSP.peer','IntegratorOrgMSP.peer')"}
+  },
+  {
+    "name": "pdc_doc_contract",
+    "policy": "OR('HatcheryOrgMSP.member','IntegratorOrgMSP.member')",
+    "requiredPeerCount": 1,
+    "maxPeerCount": 1,
+    "blockToLive": 0,
+    "memberOnlyRead": true,
+    "memberOnlyWrite": true,
+    "endorsementPolicy": {"signaturePolicy": "AND('HatcheryOrgMSP.peer','IntegratorOrgMSP.peer')"}
+  },
+  {
+    "name": "pdc_rpa_distribution",
+    "policy": "OR('RPAOrgMSP.member','DistributorOrgMSP.member')",
+    "requiredPeerCount": 1,
+    "maxPeerCount": 1,
+    "blockToLive": 0,
+    "memberOnlyRead": true,
+    "memberOnlyWrite": true,
+    "endorsementPolicy": {"signaturePolicy": "AND('RPAOrgMSP.peer','DistributorOrgMSP.peer')"}
+  },
+  {
+    "name": "pdc_quality_audit",
+    "policy": "OR('RPAOrgMSP.member','RegulatorOrgMSP.member')",
+    "requiredPeerCount": 1,
+    "maxPeerCount": 1,
+    "blockToLive": 0,
+    "memberOnlyRead": true,
+    "memberOnlyWrite": true,
+    "endorsementPolicy": {"signaturePolicy": "AND('RPAOrgMSP.peer','RegulatorOrgMSP.peer')"}
+  }
+]

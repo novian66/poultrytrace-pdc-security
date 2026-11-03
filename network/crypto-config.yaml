@@ -1,0 +1,154 @@
+OrdererOrgs:
+  - Name: OrdererOrg
+    Domain: orderer.poultrytrace.test
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: orderer0
+        CommonName: orderer0.orderer.poultrytrace.test
+        SANS:
+          - "orderer0"
+          - "ws-orderer0"
+          - "orderer0.orderer.poultrytrace.test"
+          - "localhost"
+          - "127.0.0.1"
+          - "172.20.0.9"
+      - Hostname: orderer1
+        CommonName: orderer1.orderer.poultrytrace.test
+        SANS:
+          - "orderer1"
+          - "ws-orderer1"
+          - "orderer1.orderer.poultrytrace.test"
+          - "localhost"
+          - "127.0.0.1"
+          - "172.20.0.10"
+      - Hostname: orderer2
+        CommonName: orderer2.orderer.poultrytrace.test
+        SANS:
+          - "orderer2"
+          - "ws-orderer2"
+          - "orderer2.orderer.poultrytrace.test"
+          - "localhost"
+          - "127.0.0.1"
+          - "172.20.0.11"
+      - Hostname: orderer3
+        CommonName: orderer3.orderer.poultrytrace.test
+        SANS:
+          - "orderer3"
+          - "ws-orderer3"
+          - "orderer3.orderer.poultrytrace.test"
+          - "localhost"
+          - "127.0.0.1"
+          - "172.20.0.12"
+
+PeerOrgs:
+  - Name: IntegratorOrg
+    Domain: integrator.poultrytrace.test
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: peer0
+        CommonName: peer0.integrator.poultrytrace.test
+        SANS:
+          - "integrator"
+          - "ws-integrator"
+          - "peer0.integrator.poultrytrace.test"
+          - "localhost"
+          - "127.0.0.1"
+          - "172.20.0.2"
+    Users:
+      Count: 1
+
+  - Name: HatcheryOrg
+    Domain: hatchery.poultrytrace.test
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: peer0
+        CommonName: peer0.hatchery.poultrytrace.test
+        SANS:
+          - "hatchery"
+          - "ws-hatchery"
+          - "peer0.hatchery.poultrytrace.test"
+          - "localhost"
+          - "127.0.0.1"
+          - "172.20.0.3"
+    Users:
+      Count: 1
+
+  - Name: FarmOrg
+    Domain: farm.poultrytrace.test
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: peer0
+        CommonName: peer0.farm.poultrytrace.test
+        SANS:
+          - "farm"
+          - "ws-farm"
+          - "peer0.farm.poultrytrace.test"
+          - "localhost"
+          - "127.0.0.1"
+          - "172.20.0.4"
+    Users:
+      Count: 1
+
+  - Name: RPAOrg
+    Domain: rpa.poultrytrace.test
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: peer0
+        CommonName: peer0.rpa.poultrytrace.test
+        SANS:
+          - "rpa"
+          - "ws-rpa"
+          - "peer0.rpa.poultrytrace.test"
+          - "localhost"
+          - "127.0.0.1"
+          - "172.20.0.5"
+    Users:
+      Count: 1
+
+  - Name: DistributorOrg
+    Domain: distributor.poultrytrace.test
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: peer0
+        CommonName: peer0.distributor.poultrytrace.test
+        SANS:
+          - "distributor"
+          - "ws-distributor"
+          - "peer0.distributor.poultrytrace.test"
+          - "localhost"
+          - "127.0.0.1"
+          - "172.20.0.6"
+    Users:
+      Count: 1
+
+  - Name: RetailerOrg
+    Domain: retailer.poultrytrace.test
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: peer0
+        CommonName: peer0.retailer.poultrytrace.test
+        SANS:
+          - "retailer"
+          - "ws-retailer"
+          - "peer0.retailer.poultrytrace.test"
+          - "localhost"
+          - "127.0.0.1"
+          - "172.20.0.7"
+    Users:
+      Count: 1
+
+  - Name: RegulatorOrg
+    Domain: regulator.poultrytrace.test
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: peer0
+        CommonName: peer0.regulator.poultrytrace.test
+        SANS:
+          - "regulator"
+          - "ws-regulator"
+          - "peer0.regulator.poultrytrace.test"
+          - "localhost"
+          - "127.0.0.1"
+          - "172.20.0.8"
+    Users:
+      Count: 1

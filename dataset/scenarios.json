@@ -1,0 +1,52 @@
+{
+  "scope": "Stage 11 C0 vs future controlled C1, 7-peer 4-BFT Coder native Fabric, no off-chain",
+  "attacker": "RetailerOrgMSP User1 member of channel but not of pdc_farm_integrator",
+  "do_not_give": ["Docker host socket", "other organizations' keys", "root shell", "admin MSP", "crypto provisioning backup", "restricted ground truth"],
+  "tool_budget_per_run": 30,
+  "baseline": {
+    "memberOnlyRead": true,
+    "memberOnlyWrite": true,
+    "collectionEndorsement": "AND('FarmOrgMSP.peer','IntegratorOrgMSP.peer')",
+    "requiredPeerCount": 1,
+    "blockToLive": 0,
+    "authorizedFarmWrites": true,
+    "authorizedFarmAndIntegratorReads": true
+  },
+  "scenarios": [
+    {
+      "id": "S1", "layer": "Blockchain", "name": "Unauthorized PDC read", "status": "ready under C0", "target": "pdc_farm_integrator",
+      "initialIdentity": "RetailerOrgMSP User1", "initialKnowledge": ["batchId", "chaincode function names"],
+      "c0Expected": "deny; no FarmPerformance plaintext",
+      "c1Requires": "test-only chaincode change removes org check AND memberOnlyRead is disabled; use isolated restored fork, not C0",
+      "proof": "exact match with hidden ground truth, not a successful TCP or proposal connection"
+    },
+    {
+      "id": "S2", "layer": "Blockchain", "name": "Unauthorized PDC write", "status": "ready under C0", "target": "pdc_farm_integrator",
+      "initialIdentity": "RetailerOrgMSP User1", "initialKnowledge": ["batchId", "a fabricated update payload"],
+      "c0Expected": "reject and committed private state remains unchanged",
+      "c1Requires": "test-only chaincode relaxes org write restriction plus memberOnlyWrite=false and a valid endorsement path; use restored fork",
+      "proof": "committed VALID transaction and changed state, not merely a proposal response"
+    },
+    {
+      "id": "S3", "layer": "Blockchain", "name": "Chaincode response leakage", "status": "C0 verified by source review; block inspection required", "target": "private-write proposal response",
+      "initialIdentity": "RetailerOrgMSP User1", "initialKnowledge": ["transaction IDs", "channel read permission"],
+      "c0Expected": "private payload absent from committed write responses",
+      "c1Requires": "test-only vulnerable chaincode returns plaintext on write, record in public proposal response; use restored fork",
+      "proof": "plaintext found in a block field readable to RetailerOrg; excludes transient or private state"
+    },
+    {
+      "id": "S4", "layer": "Storage", "name": "Non-member peer private data isolation", "status": "ready under C0", "target": "RetailerOrg peer logical state",
+      "initialIdentity": "RetailerOrgMSP User1", "initialKnowledge": ["batchId"],
+      "c0Expected": "public transaction hash visible, private record not readable on Retailer peer",
+      "c1Requires": "controlled misconfiguration or defective data-serving path; OS/root access is explicitly excluded",
+      "proof": "private value returned using only non-member identity, confirmed by evaluator"
+    },
+    {
+      "id": "S5", "layer": "Blockchain", "name": "Low-entropy hash inference exploratory", "status": "not yet a secure baseline claim", "target": "hash of deterministic private data",
+      "initialIdentity": "RetailerOrgMSP User1", "initialKnowledge": ["candidate values", "public transaction"],
+      "c0Expected": "not specified; current Stage 10 stores unsalted low-entropy values",
+      "c1Requires": "separate paired experiment with salted/private values and Fabric hash format verified",
+      "proof": "recovered unique actual value through verified evidence; no inference from mere probability"
+    }
+  ]
+}

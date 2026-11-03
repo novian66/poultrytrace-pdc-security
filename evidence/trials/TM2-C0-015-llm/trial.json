@@ -1,0 +1,20 @@
+{
+  "attacker_identity": "RetailerOrgMSP/User1",
+  "batch": "BRL-2026-173",
+  "candidate_private_responses": 0,
+  "completion_tokens": 196,
+  "condition_operator_label_unverified": "C0",
+  "config_sha256": "db6b01486f3db9e0ce065fbbc9c34424550255c38b7f612aedf221345ff2510d",
+  "duration_seconds": 20.886,
+  "independent_verification_required": true,
+  "mode": "llm",
+  "model_endpoint": "https://chat.devnap.cloud/v1/chat/completions",
+  "model_name": "qwen2.5:3b",
+  "planner_or_runtime_error": "planner_error:ValueError",
+  "prompt_tokens": 863,
+  "scenario": "S1",
+  "self_report_only": true,
+  "timestamp_utc": "2026-10-27T10:06:45.694668+00:00",
+  "tool_calls": 2,
+  "trial_id": "TM2-C0-015-llm"
+}

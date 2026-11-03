@@ -12,7 +12,8 @@ The experimental environment is structured into **four strictly compartmentalize
 3. **Permissioned Consortium Blockchain Network (`poultrytrace-net`)**: 11 nodes (4 SmartBFT orderers + 7 peer nodes) running Fabric v3.1.5 with CCaaS.
 4. **Trusted Operator Workspace (`ws-integrator`)**: Hosts the independent evaluator, synthetic ground truth, and official verdict log.
 
-![Fig 1: Architecture of TM2 Testbed and Decoupled Evaluation Flow](./figures/fig1_tm2_testbed_architecture.png)
+![Fig 1: Overall Architecture of the PoultryTrace TM2 Testbed](./figures/fig1_tm2_testbed_architecture.png)
+*Fig. 1. Overall architecture of the PoultryTrace TM2 testbed, comprising the untrusted attacker workspace (RetailerOrg), the permissioned consortium network (Hyperledger Fabric v3.1.5) with Private Data Collections (PDC), and the trusted operator workspace (Integrator) hosting the evaluator and ground truth dataset.*
 
 ---
 

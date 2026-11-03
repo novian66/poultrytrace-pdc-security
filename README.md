@@ -28,13 +28,17 @@ Evaluations are conducted independently by a trusted operator (`IntegratorOrgMSP
 
 The experimental platform implements an enterprise consortium network on **Hyperledger Fabric v3.1.5** with **SmartBFT consensus** (4 orderer nodes) and **7 peer organizations**. For the full technical breakdown of the network topology, node ports, mTLS communication, and PDC sideDB mechanics, see **[ARCHITECTURE.md](./ARCHITECTURE.md)**.
 
-### Compartmentalized Evaluation Flow
-The testbed strictly isolates untrusted attacker processes from trusted operator evaluations across 4 compartmentalized zones:
+### Compartmentalized Testbed Architecture
+The testbed isolates untrusted attacker processes from the consortium network and operator evaluation across three core domains:
 
-![Fig 1: Architecture of TM2 Testbed and Decoupled Evaluation Flow](./figures/fig1_tm2_testbed_architecture.png)
+![Fig 1: Overall Architecture of the PoultryTrace TM2 Testbed](./figures/fig1_tm2_testbed_architecture.png)
+*Fig. 1. Overall architecture of the PoultryTrace TM2 testbed, comprising the untrusted attacker workspace (RetailerOrg), the permissioned consortium network (Hyperledger Fabric v3.1.5) with Private Data Collections (PDC), and the trusted operator workspace (Integrator) hosting the evaluator and ground truth dataset.*
 
 ```
-Flow: ① Host triggers trial -> ② Attacker executes mTLS query -> ③ Host extracts logs via docker cp -> ④ Host triggers evaluator -> ⑤ Operator re-queries live state
+Main Evaluation Flow:
+❶ Attacker (Agentic AI) issues Fabric queries via tool gateway.
+❷ Peers enforce PDC and chaincode authorization (C0/C1).
+❸ Independent operator re-queries and verifies evaluator via ground truth.
 ```
 
 ### Consortium Peer & Orderer Topology Overview
